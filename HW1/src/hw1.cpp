@@ -1,5 +1,7 @@
 #include "hw1.h"
 #include <random>
+#include <iomanip>
+#include <iostream>
 
 namespace algebra {
 
@@ -23,6 +25,17 @@ Matrix random(std::size_t n, std::size_t m, double min, double max) {
         }
     }
     return rand;
+}
+
+void show(const Matrix &matrix) {
+    const auto default_precision{std::cout.precision()};
+    for (const auto &vec : matrix) {
+        for (const auto &el : vec) {
+            std::cout << std::setprecision(3) << el << ' ';
+        }
+        std::cout << '\n';
+    }
+    std::cout << std::setprecision(default_precision);
 }
 
 }
